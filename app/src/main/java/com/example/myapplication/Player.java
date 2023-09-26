@@ -2,11 +2,12 @@ package com.example.myapplication;
 
 public class Player {
 
-    private double x;
-    private double y;
-    private double movementSpeed;
+    private static double x;
+    private static double y;
+    private static double movementSpeed;
 
     // TODO: Instance should be named "player"
+    private static Player player;
 
     /*
      * TODO: Constructor for Player
@@ -14,12 +15,23 @@ public class Player {
      * @param y y-coordinate of player (default 0.0)
      * @param movementSpeed movement speed of player (default 5.0)
      */
+    public Player(double x, double y, double m) {
+        this.x = x;
+        this.y = y;
+        this.movementSpeed = m;
+    }
 
     /*
      * TODO: Returns the instance of the player
      * Name: getPlayer()
      * @return the instance of the player
      */
+    public static Player getPlayer() {
+        if (player == null) {
+            player = new Player(0, 0, 5.0);
+        }
+        return player;
+    }
 
     public void moveUp() {
         setY(Math.max(0, getY() - movementSpeed));
